@@ -1,10 +1,24 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Sarraj Alsersawi</title>
 <meta name="description" content="Sarraj Alsersawi — music and engineering.">
+<script>
+  // Pick the language before the page draws, so it never flashes English first.
+  // Order: ?lang=ar / ?lang=en in the address, then the visitor's last choice.
+  (function () {
+    var lang = new URLSearchParams(location.search).get('lang');
+    if (lang !== 'ar' && lang !== 'en') {
+      try { lang = localStorage.getItem('lang'); } catch (e) {}
+    }
+    if (lang === 'ar') {
+      document.documentElement.lang = 'ar';
+      document.documentElement.dir = 'rtl';
+    }
+  })();
+</script>
 <style>
   :root {
     --bg: #faf8f5; --fg: #1d1b19; --muted: #6f6a64; --accent: #c4562b;
@@ -18,7 +32,7 @@
   body {
     background: var(--bg); color: var(--fg);
     font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-    display: grid; place-items: center; padding: 24px;
+    display: grid; place-items: center; padding: 72px 24px 48px;
   }
   main { max-width: 560px; }
   .kicker {
@@ -53,35 +67,108 @@
   }
   .video-frame { aspect-ratio: 16 / 9; border-radius: 10px; overflow: hidden; background: #000; }
   .video-frame iframe { width: 100%; height: 100%; border: 0; display: block; }
+
+  /* Language switch, top corner (top-right in English, top-left in Arabic) */
+  .lang-switch {
+    position: absolute; top: 20px; inset-inline-end: 24px;
+    font: inherit; font-size: 15px; color: var(--fg);
+    background: transparent; cursor: pointer;
+    border: 1px solid color-mix(in srgb, var(--muted) 45%, transparent);
+    border-radius: 999px; padding: 6px 16px;
+  }
+  .lang-switch:hover { border-color: var(--accent); color: var(--accent); }
+  .lang-switch:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+  /* Arabic: letter-spacing breaks the joined letters, and there is no uppercase */
+  :lang(ar) .kicker, :lang(ar) .bio h2, :lang(ar) .video h2 {
+    letter-spacing: 0; text-transform: none; font-size: 16px;
+  }
+  :lang(ar) p { line-height: 1.85; }
+  :lang(ar) .lang-switch { font-size: 14px; }
+
   @media (prefers-reduced-motion: reduce) { .wave span { animation: none; height: 14px; } }
 </style>
 </head>
 <body>
+<button class="lang-switch" type="button" id="lang-switch"></button>
 <main>
-  <p class="kicker">Music &nbsp;·&nbsp; Engineering</p>
+  <p class="kicker" data-i18n="kicker">Music &nbsp;·&nbsp; Engineering</p>
   <h1>Sarraj Alsersawi</h1>
-  <p>A new home on the web is being built. Check back soon.</p>
+  <p data-i18n="tagline">A new home on the web is being built. Check back soon.</p>
   <div class="wave" aria-hidden="true">
     <span></span><span></span><span></span><span></span><span></span><span></span>
     <span></span><span></span><span></span><span></span><span></span><span></span>
   </div>
   <section class="bio" aria-labelledby="bio-title">
-    <h2 id="bio-title">About</h2>
-    <!-- Edit this text: write your bio in your own words. -->
-    <p>I work where music and engineering meet: writing, playing and
+    <h2 id="bio-title" data-i18n="aboutTitle">About</h2>
+    <!-- Edit the bio text in the TEXT list in the script at the bottom (English and Arabic). -->
+    <p data-i18n="bio1">I work where music and engineering meet: writing, playing and
       recording music, and building the tools and systems behind it.</p>
-    <p>This site will collect my projects, recordings and writing as they
+    <p data-i18n="bio2">This site will collect my projects, recordings and writing as they
       come together.</p>
   </section>
   <section class="video" aria-labelledby="video-title">
-    <h2 id="video-title">Latest video</h2>
+    <h2 id="video-title" data-i18n="videoTitle">Latest video</h2>
     <div class="video-frame">
-      <iframe src="https://www.youtube-nocookie.com/embed/zo3UJsj7Xr8"
+      <iframe id="video" src="https://www.youtube-nocookie.com/embed/zo3UJsj7Xr8"
         title="YouTube video" loading="lazy"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
         referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
     </div>
   </section>
 </main>
+<script>
+  // All page text, in both languages. Change the words here.
+  var TEXT = {
+    en: {
+      kicker: 'Music &nbsp;·&nbsp; Engineering',
+      tagline: 'A new home on the web is being built. Check back soon.',
+      aboutTitle: 'About',
+      bio1: 'I work where music and engineering meet: writing, playing and recording music, and building the tools and systems behind it.',
+      bio2: 'This site will collect my projects, recordings and writing as they come together.',
+      videoTitle: 'Latest video',
+      videoLabel: 'YouTube video',
+      description: 'Sarraj Alsersawi — music and engineering.',
+      switchTo: 'العربية',
+      switchLabel: 'اقرأ الصفحة بالعربية'
+    },
+    ar: {
+      kicker: 'موسيقى &nbsp;·&nbsp; هندسة',
+      tagline: 'موقعي الجديد قيد الإنشاء. عُد قريبًا.',
+      aboutTitle: 'نبذة عني',
+      bio1: 'أعمل حيث تلتقي الموسيقى بالهندسة: أكتب الموسيقى وأعزفها وأسجّلها، وأبني الأدوات والأنظمة التي تقف وراءها.',
+      bio2: 'سيجمع هذا الموقع مشاريعي وتسجيلاتي وكتاباتي كلما اكتملت.',
+      videoTitle: 'أحدث فيديو',
+      videoLabel: 'فيديو على يوتيوب',
+      description: 'Sarraj Alsersawi — موسيقى وهندسة.',
+      switchTo: 'English',
+      switchLabel: 'Read this page in English'
+    }
+  };
+
+  function setLanguage(lang, remember) {
+    var t = TEXT[lang];
+    var root = document.documentElement;
+    root.lang = lang;
+    root.dir = lang === 'ar' ? 'rtl' : 'ltr';
+    document.querySelectorAll('[data-i18n]').forEach(function (el) {
+      el.innerHTML = t[el.getAttribute('data-i18n')];
+    });
+    document.getElementById('video').title = t.videoLabel;
+    document.querySelector('meta[name="description"]').content = t.description;
+    var btn = document.getElementById('lang-switch');
+    btn.textContent = t.switchTo;
+    btn.lang = lang === 'ar' ? 'en' : 'ar';
+    btn.setAttribute('aria-label', t.switchLabel);
+    if (remember) {
+      try { localStorage.setItem('lang', lang); } catch (e) {}
+    }
+  }
+
+  setLanguage(document.documentElement.lang === 'ar' ? 'ar' : 'en', false);
+  document.getElementById('lang-switch').addEventListener('click', function () {
+    setLanguage(document.documentElement.lang === 'ar' ? 'en' : 'ar', true);
+  });
+</script>
 </body>
 </html>
