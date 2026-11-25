@@ -65,6 +65,26 @@
     font-size: 13px; letter-spacing: .18em; text-transform: uppercase;
     font-weight: 500; color: var(--accent); margin: 0 0 14px;
   }
+  .events { margin-top: 48px; padding-top: 32px; border-top: 1px solid color-mix(in srgb, var(--muted) 30%, transparent); }
+  .events h2 {
+    font-size: 13px; letter-spacing: .18em; text-transform: uppercase;
+    font-weight: 500; color: var(--accent); margin: 0 0 14px;
+  }
+  .event {
+    display: grid; grid-template-columns: 96px 1fr; gap: 4px 20px;
+    padding: 18px 20px; border-radius: 10px;
+    border: 1px solid color-mix(in srgb, var(--muted) 30%, transparent);
+  }
+  .event-date { color: var(--accent); font-size: 15px; line-height: 1.4; }
+  .event h3 {
+    font-family: Georgia, "Times New Roman", serif; font-weight: 400;
+    font-size: 22px; line-height: 1.25; margin: 0 0 6px;
+  }
+  .event p { font-size: 16px; color: var(--fg); opacity: .85; }
+  .event a { display: inline-block; margin-top: 10px; font-size: 15px; color: var(--accent); text-decoration: none; }
+  .event a:hover { text-decoration: underline; }
+  .event a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  @media (max-width: 480px) { .event { grid-template-columns: 1fr; } }
   .video-frame { aspect-ratio: 16 / 9; border-radius: 10px; overflow: hidden; background: #000; }
   .video-frame iframe { width: 100%; height: 100%; border: 0; display: block; }
 
@@ -80,7 +100,7 @@
   .lang-switch:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 
   /* Arabic: letter-spacing breaks the joined letters, and there is no uppercase */
-  :lang(ar) .kicker, :lang(ar) .bio h2, :lang(ar) .video h2 {
+  :lang(ar) .kicker, :lang(ar) .bio h2, :lang(ar) .video h2, :lang(ar) .events h2 {
     letter-spacing: 0; text-transform: none; font-size: 16px;
   }
   :lang(ar) p { line-height: 1.85; }
@@ -107,6 +127,20 @@
     <p data-i18n="bio2">This site will collect my projects, recordings and writing as they
       come together.</p>
   </section>
+  <section class="events" aria-labelledby="events-title">
+    <h2 id="events-title" data-i18n="eventsTitle">Upcoming</h2>
+    <!-- Edit the event text in the TEXT list in the script at the bottom (English and Arabic). -->
+    <article class="event">
+      <div class="event-date" data-i18n="ethnoDate">Winter 2027</div>
+      <div>
+        <h3>Ethno on the Road</h3>
+        <p data-i18n="ethnoText">A concert tour of central Sweden with musicians from Ethno, the
+          international folk music gathering. I'll be playing oud.</p>
+        <a href="https://ethno.se/ethno-on-the-road/" target="_blank" rel="noopener"
+          data-i18n="ethnoLink">About the tour →</a>
+      </div>
+    </article>
+  </section>
   <section class="video" aria-labelledby="video-title">
     <h2 id="video-title" data-i18n="videoTitle">Latest video</h2>
     <div class="video-frame">
@@ -126,6 +160,10 @@
       aboutTitle: 'About',
       bio1: 'I work where music and engineering meet: writing, playing and recording music, and building the tools and systems behind it.',
       bio2: 'This site will collect my projects, recordings and writing as they come together.',
+      eventsTitle: 'Upcoming',
+      ethnoDate: 'Winter 2027',
+      ethnoText: 'A concert tour of central Sweden with musicians from Ethno, the international folk music gathering. I\'ll be playing oud.',
+      ethnoLink: 'About the tour →',
       videoTitle: 'Latest video',
       videoLabel: 'YouTube video',
       description: 'Sarraj Alsersawi — music and engineering.',
@@ -138,6 +176,10 @@
       aboutTitle: 'نبذة عني',
       bio1: 'أعمل حيث تلتقي الموسيقى بالهندسة: أكتب الموسيقى وأعزفها وأسجّلها، وأبني الأدوات والأنظمة التي تقف وراءها.',
       bio2: 'سيجمع هذا الموقع مشاريعي وتسجيلاتي وكتاباتي كلما اكتملت.',
+      eventsTitle: 'قريبًا',
+      ethnoDate: 'شتاء 2027',
+      ethnoText: 'جولة حفلات في وسط السويد مع موسيقيين من «إثنو»، الملتقى الدولي للموسيقى الشعبية. سأعزف على العود.',
+      ethnoLink: 'عن الجولة ←',
       videoTitle: 'أحدث فيديو',
       videoLabel: 'فيديو على يوتيوب',
       description: 'Sarraj Alsersawi — موسيقى وهندسة.',
