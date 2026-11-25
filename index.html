@@ -32,9 +32,33 @@
   body {
     background: var(--bg); color: var(--fg);
     font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-    display: grid; place-items: center; padding: 72px 24px 48px;
+    display: grid; justify-items: center; align-items: start; padding: 72px 24px 48px;
   }
-  main { max-width: 560px; }
+  main { max-width: 560px; width: 100%; }
+
+  /* In-page links under the name */
+  .page-nav { display: flex; flex-wrap: wrap; gap: 8px 20px; margin-top: 32px; }
+  .page-nav a { color: var(--muted); text-decoration: none; font-size: 15px; }
+  .page-nav a:hover { color: var(--accent); }
+  .page-nav a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+  /* Wide screens: name on one side (stays put), sections scroll on the other.
+     In Arabic the grid mirrors on its own, so the name sits on the right. */
+  @media (min-width: 960px) {
+    body { padding: 0 48px; }
+    main {
+      max-width: 1120px;
+      display: grid; grid-template-columns: minmax(300px, 400px) minmax(0, 620px);
+      justify-content: space-between; column-gap: 72px;
+    }
+    .intro {
+      position: sticky; top: 0; align-self: start;
+      min-height: 100vh; display: flex; flex-direction: column; justify-content: center;
+      padding: 72px 0;
+    }
+    .content { padding: 112px 0 96px; }
+    .content > section:first-child { margin-top: 0; padding-top: 0; border-top: 0; }
+  }
   .kicker {
     font-size: 13px; letter-spacing: .18em; text-transform: uppercase;
     color: var(--accent); margin: 0 0 16px;
@@ -112,13 +136,21 @@
 <body>
 <button class="lang-switch" type="button" id="lang-switch"></button>
 <main>
-  <p class="kicker" data-i18n="kicker">Music &nbsp;·&nbsp; Engineering</p>
-  <h1>Sarraj Alsersawi</h1>
-  <p data-i18n="tagline">A new home on the web is being built. Check back soon.</p>
-  <div class="wave" aria-hidden="true">
-    <span></span><span></span><span></span><span></span><span></span><span></span>
-    <span></span><span></span><span></span><span></span><span></span><span></span>
-  </div>
+  <header class="intro">
+    <p class="kicker" data-i18n="kicker">Music &nbsp;·&nbsp; Engineering</p>
+    <h1>Sarraj Alsersawi</h1>
+    <p data-i18n="tagline">A new home on the web is being built. Check back soon.</p>
+    <div class="wave" aria-hidden="true">
+      <span></span><span></span><span></span><span></span><span></span><span></span>
+      <span></span><span></span><span></span><span></span><span></span><span></span>
+    </div>
+    <nav class="page-nav" aria-label="Sections" id="page-nav">
+      <a href="#bio-title" data-i18n="navAbout">About</a>
+      <a href="#events-title" data-i18n="navEvents">Upcoming</a>
+      <a href="#video-title" data-i18n="navVideo">Video</a>
+    </nav>
+  </header>
+  <div class="content">
   <section class="bio" aria-labelledby="bio-title">
     <h2 id="bio-title" data-i18n="aboutTitle">About</h2>
     <!-- Edit the bio text in the TEXT list in the script at the bottom (English and Arabic). -->
@@ -150,6 +182,7 @@
         referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
     </div>
   </section>
+  </div>
 </main>
 <script>
   // All page text, in both languages. Change the words here.
@@ -160,6 +193,10 @@
       aboutTitle: 'About',
       bio1: 'I work where music and engineering meet: writing, playing and recording music, and building the tools and systems behind it.',
       bio2: 'This site will collect my projects, recordings and writing as they come together.',
+      navAbout: 'About',
+      navEvents: 'Upcoming',
+      navVideo: 'Video',
+      navLabel: 'Sections',
       eventsTitle: 'Upcoming',
       ethnoDate: 'Winter 2027',
       ethnoText: 'A concert tour of central Sweden with musicians from Ethno, the international folk music gathering. I\'ll be playing oud.',
@@ -176,6 +213,10 @@
       aboutTitle: 'نبذة عني',
       bio1: 'أعمل حيث تلتقي الموسيقى بالهندسة: أكتب الموسيقى وأعزفها وأسجّلها، وأبني الأدوات والأنظمة التي تقف وراءها.',
       bio2: 'سيجمع هذا الموقع مشاريعي وتسجيلاتي وكتاباتي كلما اكتملت.',
+      navAbout: 'نبذة عني',
+      navEvents: 'قريبًا',
+      navVideo: 'فيديو',
+      navLabel: 'أقسام الصفحة',
       eventsTitle: 'قريبًا',
       ethnoDate: 'شتاء 2027',
       ethnoText: 'جولة حفلات في وسط السويد مع موسيقيين من «إثنو»، الملتقى الدولي للموسيقى الشعبية. سأعزف على العود.',
@@ -197,6 +238,7 @@
       el.innerHTML = t[el.getAttribute('data-i18n')];
     });
     document.getElementById('video').title = t.videoLabel;
+    document.getElementById('page-nav').setAttribute('aria-label', t.navLabel);
     document.querySelector('meta[name="description"]').content = t.description;
     var btn = document.getElementById('lang-switch');
     btn.textContent = t.switchTo;
