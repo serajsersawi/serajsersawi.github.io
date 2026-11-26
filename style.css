@@ -8,7 +8,7 @@
   :root { --bg: #141312; --fg: #f1ede8; --muted: #9a948d; --accent: #e57a4e; }
 }
 * { box-sizing: border-box; }
-html, body { min-height: 100%; margin: 0; }
+html, body { min-height: 100%; margin: 0; overflow-x: hidden; }
 body {
   min-height: 100vh;
   background: var(--bg); color: var(--fg);
@@ -22,8 +22,10 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outlin
    Only on the home page: pages without a .photo-header are unaffected. */
 .photo-header {
   position: relative;
-  width: 100vw; margin-left: calc(50% - 50vw);
-  height: min(60vh, 520px);
+  /* Break out of body's own side padding (24px here, 48px on wide screens below)
+     instead of using a 100vw trick, which misaligns inside a grid parent. */
+  width: calc(100% + 48px); margin: 0 -24px;
+  height: min(42vh, 340px);
   overflow: hidden;
 }
 .photo-header img {
@@ -117,6 +119,7 @@ p { font-size: 18px; line-height: 1.6; color: var(--muted); margin: 0; }
   }
   .content { padding: 112px 0 96px; }
   .content > .section:first-child { margin-top: 0; padding-top: 0; border-top: 0; }
+  .photo-header { width: calc(100% + 96px); margin: 0 -48px; height: min(60vh, 520px); }
 }
 
 /* ---------- Language switch, top corner (top-right in English, top-left in Arabic) ---------- */
