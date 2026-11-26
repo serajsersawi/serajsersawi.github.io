@@ -77,13 +77,6 @@
   .wave span:nth-child(odd) { animation-delay: -.4s; }
   .wave span:nth-child(3n) { animation-delay: -.8s; }
   @keyframes beat { 0%,100% { height: 6px } 50% { height: 28px } }
-  .bio { margin-top: 48px; padding-top: 32px; border-top: 1px solid color-mix(in srgb, var(--muted) 30%, transparent); }
-  .bio h2 {
-    font-size: 13px; letter-spacing: .18em; text-transform: uppercase;
-    font-weight: 500; color: var(--accent); margin: 0 0 14px;
-  }
-  .bio p { font-size: 17px; color: var(--fg); opacity: .85; }
-  .bio p + p { margin-top: 14px; }
   .video { margin-top: 48px; padding-top: 32px; border-top: 1px solid color-mix(in srgb, var(--muted) 30%, transparent); }
   .video h2 {
     font-size: 13px; letter-spacing: .18em; text-transform: uppercase;
@@ -124,7 +117,7 @@
   .lang-switch:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 
   /* Arabic: letter-spacing breaks the joined letters, and there is no uppercase */
-  :lang(ar) .kicker, :lang(ar) .bio h2, :lang(ar) .video h2, :lang(ar) .events h2 {
+  :lang(ar) .kicker, :lang(ar) .video h2, :lang(ar) .events h2 {
     letter-spacing: 0; text-transform: none; font-size: 16px;
   }
   :lang(ar) p { line-height: 1.85; }
@@ -139,26 +132,20 @@
   <header class="intro">
     <p class="kicker" data-i18n="kicker">Music &nbsp;·&nbsp; Engineering</p>
     <h1>Sarraj Alsersawi</h1>
-    <p data-i18n="tagline">A new home on the web is being built. Check back soon.</p>
+    <p data-i18n="tagline">Sarraj Alsersawi is a Palestinian musician and engineer, born in Gaza in
+      1998 and now living in Ireland. He completed his intermediate oud studies at the Edward Said
+      National Conservatory of Music in 2017, and won first place in the Arabic music section
+      of the Palestine National Music Competition in 2021.</p>
     <div class="wave" aria-hidden="true">
       <span></span><span></span><span></span><span></span><span></span><span></span>
       <span></span><span></span><span></span><span></span><span></span><span></span>
     </div>
     <nav class="page-nav" aria-label="Sections" id="page-nav">
-      <a href="#bio-title" data-i18n="navAbout">About</a>
       <a href="#events-title" data-i18n="navEvents">Upcoming</a>
       <a href="#video-title" data-i18n="navVideo">Video</a>
     </nav>
   </header>
   <div class="content">
-  <section class="bio" aria-labelledby="bio-title">
-    <h2 id="bio-title" data-i18n="aboutTitle">About</h2>
-    <!-- Edit the bio text in the TEXT list in the script at the bottom (English and Arabic). -->
-    <p data-i18n="bio1">I work where music and engineering meet: writing, playing and
-      recording music, and building the tools and systems behind it.</p>
-    <p data-i18n="bio2">This site will collect my projects, recordings and writing as they
-      come together.</p>
-  </section>
   <section class="events" aria-labelledby="events-title">
     <h2 id="events-title" data-i18n="eventsTitle">Upcoming</h2>
     <!-- Edit the event text in the TEXT list in the script at the bottom (English and Arabic). -->
@@ -189,11 +176,7 @@
   var TEXT = {
     en: {
       kicker: 'Music &nbsp;·&nbsp; Engineering',
-      tagline: 'A new home on the web is being built. Check back soon.',
-      aboutTitle: 'About',
-      bio1: 'I work where music and engineering meet: writing, playing and recording music, and building the tools and systems behind it.',
-      bio2: 'This site will collect my projects, recordings and writing as they come together.',
-      navAbout: 'About',
+      tagline: 'Sarraj Alsersawi is a Palestinian musician and engineer, born in Gaza in 1998 and now living in Ireland. He completed his intermediate oud studies at the Edward Said National Conservatory of Music in 2017, and won first place in the Arabic music section of the Palestine National Music Competition in 2021.',
       navEvents: 'Upcoming',
       navVideo: 'Video',
       navLabel: 'Sections',
@@ -209,11 +192,7 @@
     },
     ar: {
       kicker: 'موسيقى &nbsp;·&nbsp; هندسة',
-      tagline: 'موقعي الجديد قيد الإنشاء. عُد قريبًا.',
-      aboutTitle: 'نبذة عني',
-      bio1: 'أعمل حيث تلتقي الموسيقى بالهندسة: أكتب الموسيقى وأعزفها وأسجّلها، وأبني الأدوات والأنظمة التي تقف وراءها.',
-      bio2: 'سيجمع هذا الموقع مشاريعي وتسجيلاتي وكتاباتي كلما اكتملت.',
-      navAbout: 'نبذة عني',
+      tagline: 'سراج السرساوي موسيقي ومهندس فلسطيني، وُلد في غزة عام 1998 ويقيم حاليًا في أيرلندا. أنهى دراسته المتوسطة لآلة العود في معهد إدوارد سعيد الوطني للموسيقى عام 2017، وحصل على المركز الأول في قسم الموسيقى العربية في مسابقة فلسطين الوطنية للموسيقى عام 2021.',
       navEvents: 'قريبًا',
       navVideo: 'فيديو',
       navLabel: 'أقسام الصفحة',
