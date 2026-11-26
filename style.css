@@ -18,6 +18,23 @@ body {
 main { max-width: 560px; width: 100%; }
 a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 
+/* Full-width photo header, fading into the page background at the bottom.
+   Only on the home page: pages without a .photo-header are unaffected. */
+.photo-header {
+  position: relative;
+  width: 100vw; margin-left: calc(50% - 50vw);
+  height: min(60vh, 520px);
+  overflow: hidden;
+}
+.photo-header img {
+  width: 100%; height: 100%; object-fit: cover; object-position: center 30%;
+  display: block;
+}
+.photo-header::after {
+  content: ""; position: absolute; inset: 0;
+  background: linear-gradient(to bottom, transparent 70%, var(--bg) 98%);
+}
+
 /* ---------- Left column: name and intro ---------- */
 .kicker {
   font-size: 13px; letter-spacing: .18em; text-transform: uppercase;
