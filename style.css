@@ -1,0 +1,122 @@
+/* Shared styles for every page of the site. */
+
+:root {
+  --bg: #faf8f5; --fg: #1d1b19; --muted: #6f6a64; --accent: #c4562b;
+  --line: color-mix(in srgb, var(--muted) 30%, transparent);
+}
+@media (prefers-color-scheme: dark) {
+  :root { --bg: #141312; --fg: #f1ede8; --muted: #9a948d; --accent: #e57a4e; }
+}
+* { box-sizing: border-box; }
+html, body { min-height: 100%; margin: 0; }
+body {
+  min-height: 100vh;
+  background: var(--bg); color: var(--fg);
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  display: grid; justify-items: center; align-items: start; padding: 72px 24px 48px;
+}
+main { max-width: 560px; width: 100%; }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+/* ---------- Left column: name and intro ---------- */
+.kicker {
+  font-size: 13px; letter-spacing: .18em; text-transform: uppercase;
+  color: var(--accent); margin: 0 0 16px;
+}
+h1 {
+  font-family: Georgia, "Times New Roman", serif; font-weight: 400;
+  font-size: clamp(40px, 9vw, 72px); line-height: 1.02; margin: 0 0 20px;
+  letter-spacing: -.02em;
+}
+h1 a { color: inherit; text-decoration: none; }
+p { font-size: 18px; line-height: 1.6; color: var(--muted); margin: 0; }
+
+.wave { display: flex; gap: 4px; align-items: center; height: 28px; margin-top: 36px; }
+.wave span {
+  width: 4px; border-radius: 2px; background: var(--accent); opacity: .85;
+  animation: beat 1.2s ease-in-out infinite;
+}
+.wave span:nth-child(odd) { animation-delay: -.4s; }
+.wave span:nth-child(3n) { animation-delay: -.8s; }
+@keyframes beat { 0%,100% { height: 6px } 50% { height: 28px } }
+
+/* Outlined button, e.g. "Read full bio" */
+.button {
+  display: inline-block; margin-top: 24px;
+  font-size: 15px; color: var(--accent); text-decoration: none;
+  border: 1px solid var(--accent); border-radius: 999px; padding: 9px 20px;
+}
+.button:hover { background: var(--accent); color: var(--bg); }
+
+/* Small link back to the home page */
+.back-link { display: inline-block; margin-bottom: 28px; font-size: 15px; color: var(--muted); text-decoration: none; }
+.back-link:hover { color: var(--accent); }
+
+/* Links under the name */
+.page-nav { display: flex; flex-wrap: wrap; gap: 8px 20px; margin-top: 32px; }
+.page-nav a { color: var(--muted); text-decoration: none; font-size: 15px; }
+.page-nav a:hover { color: var(--accent); }
+
+/* ---------- Right column: sections ---------- */
+.section { margin-top: 48px; padding-top: 32px; border-top: 1px solid var(--line); }
+.section h2 {
+  font-size: 13px; letter-spacing: .18em; text-transform: uppercase;
+  font-weight: 500; color: var(--accent); margin: 0 0 14px;
+}
+.section > p { font-size: 17px; color: var(--fg); opacity: .85; }
+.section > p + p { margin-top: 14px; }
+.section > p a { color: var(--accent); }
+
+.event {
+  display: grid; grid-template-columns: 96px 1fr; gap: 4px 20px;
+  padding: 18px 20px; border-radius: 10px; border: 1px solid var(--line);
+}
+.event-date { color: var(--accent); font-size: 15px; line-height: 1.4; }
+.event h3 {
+  font-family: Georgia, "Times New Roman", serif; font-weight: 400;
+  font-size: 22px; line-height: 1.25; margin: 0 0 6px;
+}
+.event p { font-size: 16px; color: var(--fg); opacity: .85; }
+.event a { display: inline-block; margin-top: 10px; font-size: 15px; color: var(--accent); text-decoration: none; }
+.event a:hover { text-decoration: underline; }
+@media (max-width: 480px) { .event { grid-template-columns: 1fr; } }
+
+.video-frame { aspect-ratio: 16 / 9; border-radius: 10px; overflow: hidden; background: #000; }
+.video-frame iframe { width: 100%; height: 100%; border: 0; display: block; }
+
+/* ---------- Wide screens: name on one side (stays put), sections scroll on the other.
+   In Arabic the grid mirrors on its own, so the name sits on the right. ---------- */
+@media (min-width: 960px) {
+  body { padding: 0 48px; }
+  main {
+    max-width: 1120px;
+    display: grid; grid-template-columns: minmax(300px, 400px) minmax(0, 620px);
+    justify-content: space-between; column-gap: 72px;
+  }
+  .intro {
+    position: sticky; top: 0; align-self: start;
+    min-height: 100vh; display: flex; flex-direction: column; justify-content: center;
+    align-items: flex-start; padding: 72px 0;
+  }
+  .content { padding: 112px 0 96px; }
+  .content > .section:first-child { margin-top: 0; padding-top: 0; border-top: 0; }
+}
+
+/* ---------- Language switch, top corner (top-right in English, top-left in Arabic) ---------- */
+.lang-switch {
+  position: absolute; top: 20px; inset-inline-end: 24px;
+  font: inherit; font-size: 15px; color: var(--fg);
+  background: transparent; cursor: pointer;
+  border: 1px solid color-mix(in srgb, var(--muted) 45%, transparent);
+  border-radius: 999px; padding: 6px 16px;
+}
+.lang-switch:hover { border-color: var(--accent); color: var(--accent); }
+
+/* Arabic: letter-spacing breaks the joined letters, and there is no uppercase */
+:lang(ar) .kicker, :lang(ar) .section h2 {
+  letter-spacing: 0; text-transform: none; font-size: 16px;
+}
+:lang(ar) p { line-height: 1.85; }
+:lang(ar) .lang-switch { font-size: 14px; }
+
+@media (prefers-reduced-motion: reduce) { .wave span { animation: none; height: 14px; } }
