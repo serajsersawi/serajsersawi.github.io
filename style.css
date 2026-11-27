@@ -25,7 +25,9 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outlin
   /* Break out of body's own side padding (24px here, 48px on wide screens below)
      instead of using a 100vw trick, which misaligns inside a grid parent. */
   width: calc(100% + 48px); margin: 0 -24px;
-  height: min(42vh, 340px);
+  /* Match the photo's own 16:9 shape, so narrow phone widths show the whole
+     frame instead of a tall, cropped-in sliver of it. */
+  aspect-ratio: 16 / 9;
   overflow: hidden;
 }
 .photo-header img {
@@ -119,7 +121,7 @@ p { font-size: 18px; line-height: 1.6; color: var(--muted); margin: 0; }
   }
   .content { padding: 112px 0 96px; }
   .content > .section:first-child { margin-top: 0; padding-top: 0; border-top: 0; }
-  .photo-header { width: calc(100% + 96px); margin: 0 -48px; height: min(60vh, 520px); }
+  .photo-header { width: calc(100% + 96px); margin: 0 -48px; aspect-ratio: auto; height: min(60vh, 520px); }
 }
 
 /* ---------- Language switch, top corner (top-right in English, top-left in Arabic) ---------- */
