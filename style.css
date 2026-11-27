@@ -46,7 +46,7 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outlin
    and the rest of the page. Same full-bleed technique as .photo-header. */
 .tatreez-strip {
   width: calc(100% + 48px); margin: 20px -24px 0;
-  height: 34px;
+  height: 46px;
   background-image: url("images/tatreez-separator.png");
   /* "round" (rather than repeat-x) slightly resizes each tile so a whole
      number always fits the width exactly, so no tile is ever cut off at
@@ -166,7 +166,7 @@ p { font-size: 18px; line-height: 1.6; color: var(--muted); margin: 0; }
   .content { padding: 112px 0 96px; }
   .content > .section:first-child { margin-top: 0; padding-top: 0; border-top: 0; }
   .photo-header { width: calc(100% + 96px); margin: 0 -48px; aspect-ratio: auto; height: min(60vh, 520px); }
-  .tatreez-strip { width: calc(100% + 96px); margin: 28px -48px 0; height: 44px; }
+  .tatreez-strip { width: calc(100% + 96px); margin: 28px -48px 0; height: 60px; }
 }
 
 /* ---------- Language switch, top corner (top-right in English, top-left in Arabic) ---------- */
