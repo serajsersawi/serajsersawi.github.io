@@ -124,6 +124,10 @@ p { font-size: 18px; line-height: 1.6; color: var(--muted); margin: 0; }
 .section > p { font-size: 17px; color: var(--fg); opacity: .85; }
 .section > p + p { margin-top: 14px; }
 .section > p a { color: var(--accent); }
+/* A row of "… →" links under a paragraph; wraps onto two lines on phones. */
+.section > .link-row { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 15px; opacity: 1; }
+.section > .link-row a { text-decoration: none; }
+.section > .link-row a:hover { text-decoration: underline; }
 
 /* A small photo inside a bio section, with a caption. Same size on phones. */
 .bio-photo { margin: 18px 0 18px; }
