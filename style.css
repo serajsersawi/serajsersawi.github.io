@@ -200,7 +200,12 @@ p { font-size: 18px; line-height: 1.6; color: var(--muted); margin: 0; }
   }
   .content { padding: 112px 0 96px; }
   .content > .section:first-child { margin-top: 0; padding-top: 0; border-top: 0; }
-  .photo-header { width: calc(100% + 96px); margin: 0 -48px; aspect-ratio: auto; height: min(60vh, 520px); }
+  /* Wide screens: the box is much wider than tall, so the photo is cropped.
+     Make it taller, aim the crop a little lower so the oud stays in view,
+     and fade only a fixed 160px at the bottom instead of a % of the height. */
+  .photo-header { width: calc(100% + 96px); margin: 0 -48px; aspect-ratio: auto; height: min(75vh, 680px); }
+  .photo-header img { object-position: center 55%; }
+  .photo-header::after { background: linear-gradient(to bottom, transparent calc(100% - 160px), var(--bg) 100%); }
   .tatreez-strip { width: calc(100% + 96px); margin: 28px -48px 0; height: 60px; }
 }
 
