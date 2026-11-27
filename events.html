@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title data-i18n="pageTitle">Events — Sarraj Alsersawi</title>
+<meta name="description" content="Upcoming events and performance history for Sarraj Alsersawi." data-i18n-content="description">
+<link rel="stylesheet" href="style.css">
+<script src="site.js"></script>
+</head>
+<body>
+<!--
+  How to edit this page:
+  - English: change the words right here in the HTML.
+  - Arabic: change the matching entry in the AR list at the bottom of this file.
+  - To add an event: copy one <li> block in the timeline you want (Upcoming or Past),
+    give its data-i18n names a new number, and add matching entries to the AR list.
+  - When an upcoming event happens, move its <li> down into the Past timeline.
+-->
+<button class="lang-switch" type="button" id="lang-switch"></button>
+<main>
+  <header class="intro">
+    <a class="back-link" href="index.html" data-i18n="back">← Home</a>
+    <p class="kicker" data-i18n="kicker">Events</p>
+    <h1><a href="index.html">Sarraj Alsersawi</a></h1>
+    <p data-i18n="summary">Upcoming performances, and a record of past concerts, tours and
+      collaborations.</p>
+  </header>
+
+  <div class="content">
+    <section class="section" aria-labelledby="upcoming-title">
+      <h2 id="upcoming-title" data-i18n="upcomingTitle">Upcoming</h2>
+      <article class="event">
+        <div class="event-date" data-i18n="ethnoDate">Winter 2027</div>
+        <div>
+          <h3>Ethno on the Road</h3>
+          <p data-i18n="ethnoText">A concert tour of central Sweden with musicians from Ethno, the
+            international folk music gathering. Sarraj will be playing oud.</p>
+          <a href="https://ethno.se/ethno-on-the-road/" target="_blank" rel="noopener"
+            data-i18n="ethnoLink">About the tour →</a>
+        </div>
+      </article>
+    </section>
+
+    <!-- PLACEHOLDER: list every past event here, most recent first. -->
+    <section class="section" aria-labelledby="past-title">
+      <h2 id="past-title" data-i18n="pastTitle">Past</h2>
+      <ol class="timeline">
+        <li>
+          <div class="timeline-date" data-i18n="past1Date">Month Year</div>
+          <h3 data-i18n="past1Title">Event or performance name</h3>
+          <p data-i18n="past1Text">One or two lines about this performance or participation.</p>
+        </li>
+        <li>
+          <div class="timeline-date" data-i18n="past2Date">Month Year</div>
+          <h3 data-i18n="past2Title">Event or performance name</h3>
+          <p data-i18n="past2Text">One or two lines about this performance or participation.</p>
+        </li>
+        <li>
+          <div class="timeline-date" data-i18n="past3Date">Month Year</div>
+          <h3 data-i18n="past3Title">Event or performance name</h3>
+          <p data-i18n="past3Text">One or two lines about this performance or participation.</p>
+        </li>
+      </ol>
+    </section>
+  </div>
+</main>
+<script>
+  // Arabic text for this page. Each name matches a data-i18n="…" in the HTML above.
+  var AR = {
+    pageTitle: 'الفعاليات — سراج السرساوي',
+    description: 'الفعاليات القادمة وسجل المشاركات السابقة لسراج السرساوي.',
+    back: 'الرئيسية →',
+    kicker: 'الفعاليات',
+    summary: 'الحفلات القادمة، وسجل الحفلات والجولات والمشاركات السابقة.',
+    upcomingTitle: 'قريبًا',
+    ethnoDate: 'شتاء 2027',
+    ethnoText: 'جولة حفلات في وسط السويد مع موسيقيين من «إثنو»، الملتقى الدولي للموسيقى الشعبية. سيعزف سراج على العود.',
+    ethnoLink: 'عن الجولة ←',
+    pastTitle: 'سابقًا',
+    past1Date: 'الشهر والسنة',
+    past1Title: 'اسم الحدث أو الحفل',
+    past1Text: 'سطر أو سطران عن هذا الحفل أو المشاركة.',
+    past2Date: 'الشهر والسنة',
+    past2Title: 'اسم الحدث أو الحفل',
+    past2Text: 'سطر أو سطران عن هذا الحفل أو المشاركة.',
+    past3Date: 'الشهر والسنة',
+    past3Title: 'اسم الحدث أو الحفل',
+    past3Text: 'سطر أو سطران عن هذا الحفل أو المشاركة.'
+  };
+</script>
+</body>
+</html>

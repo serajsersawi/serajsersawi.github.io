@@ -33,12 +33,23 @@
       <span></span><span></span><span></span><span></span><span></span><span></span>
     </div>
     <nav class="page-nav" aria-label="Sections" data-i18n-aria-label="navLabel">
-      <a href="#events-title" data-i18n="navEvents">Upcoming</a>
       <a href="#video-title" data-i18n="navVideo">Video</a>
+      <a href="#events-title" data-i18n="navEvents">Upcoming</a>
+      <a href="#recent-title" data-i18n="navRecent">Recent</a>
     </nav>
   </header>
 
   <div class="content">
+    <section class="section" aria-labelledby="video-title">
+      <h2 id="video-title" data-i18n="videoTitle">Latest video</h2>
+      <div class="video-frame">
+        <iframe src="https://www.youtube-nocookie.com/embed/zo3UJsj7Xr8"
+          title="YouTube video" data-i18n-title="videoLabel" loading="lazy"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+    </section>
+
     <section class="section" aria-labelledby="events-title">
       <h2 id="events-title" data-i18n="eventsTitle">Upcoming</h2>
       <article class="event">
@@ -53,14 +64,28 @@
       </article>
     </section>
 
-    <section class="section" aria-labelledby="video-title">
-      <h2 id="video-title" data-i18n="videoTitle">Latest video</h2>
-      <div class="video-frame">
-        <iframe src="https://www.youtube-nocookie.com/embed/zo3UJsj7Xr8"
-          title="YouTube video" data-i18n-title="videoLabel" loading="lazy"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-      </div>
+    <!-- PLACEHOLDER: replace these 3 entries with the actual latest events, most recent first.
+         The full list (this plus everything older) belongs in events.html. -->
+    <section class="section" aria-labelledby="recent-title">
+      <h2 id="recent-title" data-i18n="recentTitle">Recent</h2>
+      <ol class="timeline">
+        <li>
+          <div class="timeline-date" data-i18n="recent1Date">Month Year</div>
+          <h3 data-i18n="recent1Title">Event or performance name</h3>
+          <p data-i18n="recent1Text">One line about this performance or participation.</p>
+        </li>
+        <li>
+          <div class="timeline-date" data-i18n="recent2Date">Month Year</div>
+          <h3 data-i18n="recent2Title">Event or performance name</h3>
+          <p data-i18n="recent2Text">One line about this performance or participation.</p>
+        </li>
+        <li>
+          <div class="timeline-date" data-i18n="recent3Date">Month Year</div>
+          <h3 data-i18n="recent3Title">Event or performance name</h3>
+          <p data-i18n="recent3Text">One line about this performance or participation.</p>
+        </li>
+      </ol>
+      <a class="button" href="events.html" data-i18n="recentMore">Read more →</a>
     </section>
   </div>
 </main>
@@ -74,12 +99,24 @@
     navLabel: 'أقسام الصفحة',
     navEvents: 'قريبًا',
     navVideo: 'فيديو',
+    navRecent: 'آخر النشاطات',
     eventsTitle: 'قريبًا',
     ethnoDate: 'شتاء 2027',
     ethnoText: 'جولة حفلات في وسط السويد مع موسيقيين من «إثنو»، الملتقى الدولي للموسيقى الشعبية. سيعزف سراج على العود.',
     ethnoLink: 'عن الجولة ←',
     videoTitle: 'أحدث فيديو',
-    videoLabel: 'فيديو على يوتيوب'
+    videoLabel: 'فيديو على يوتيوب',
+    recentTitle: 'آخر النشاطات',
+    recent1Date: 'الشهر والسنة',
+    recent1Title: 'اسم الحدث أو الحفل',
+    recent1Text: 'سطر واحد عن هذا الحفل أو المشاركة.',
+    recent2Date: 'الشهر والسنة',
+    recent2Title: 'اسم الحدث أو الحفل',
+    recent2Text: 'سطر واحد عن هذا الحفل أو المشاركة.',
+    recent3Date: 'الشهر والسنة',
+    recent3Title: 'اسم الحدث أو الحفل',
+    recent3Text: 'سطر واحد عن هذا الحفل أو المشاركة.',
+    recentMore: 'اقرأ المزيد ←'
   };
 </script>
 </body>
