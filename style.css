@@ -18,7 +18,8 @@ body {
 main { max-width: 560px; width: 100%; }
 a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 
-/* Full-width photo header, fading into the page background at the bottom.
+/* Full-width photo header, with a thin fade into the page background right
+   at its bottom edge, above the tatreez strip (see .tatreez-strip).
    Only on the home page: pages without a .photo-header are unaffected. */
 .photo-header {
   position: relative;
@@ -36,7 +37,9 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outlin
 }
 .photo-header::after {
   content: ""; position: absolute; inset: 0;
-  background: linear-gradient(to bottom, transparent 70%, var(--bg) 98%);
+  /* The fade is a % of the box's own height. Kept short and late so it only
+     touches the very bottom edge, however tall the box gets. */
+  background: linear-gradient(to bottom, transparent 55%, var(--bg) 100%);
 }
 
 /* Tatreez-pattern separator, tiled edge to edge, between the photo header
@@ -155,9 +158,6 @@ p { font-size: 18px; line-height: 1.6; color: var(--muted); margin: 0; }
   .content { padding: 112px 0 96px; }
   .content > .section:first-child { margin-top: 0; padding-top: 0; border-top: 0; }
   .photo-header { width: calc(100% + 96px); margin: 0 -48px; aspect-ratio: auto; height: min(60vh, 520px); }
-  /* The fade is a % of the box's own height, and this box is much taller than
-     on mobile, so start it later and compress it into a smaller slice. */
-  .photo-header::after { background: linear-gradient(to bottom, transparent 88%, var(--bg) 99%); }
   .tatreez-strip { width: calc(100% + 96px); margin: 28px -48px 0; height: 44px; }
 }
 
