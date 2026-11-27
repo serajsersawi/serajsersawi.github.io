@@ -106,6 +106,15 @@ p { font-size: 18px; line-height: 1.6; color: var(--muted); margin: 0; }
 .page-nav a { color: var(--muted); text-decoration: none; font-size: 15px; }
 .page-nav a:hover { color: var(--accent); }
 
+/* Social icons under the intro. 44px tap targets so they're easy to hit on phones. */
+.social { display: flex; gap: 4px; margin-top: 20px; margin-inline-start: -10px; }
+.social a {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 44px; height: 44px; border-radius: 50%; color: var(--muted);
+}
+.social a:hover { color: var(--accent); }
+.social svg { width: 22px; height: 22px; }
+
 /* ---------- Right column: sections ---------- */
 .section { margin-top: 48px; padding-top: 32px; border-top: 1px solid var(--line); }
 .section h2 {
