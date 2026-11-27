@@ -69,5 +69,44 @@
         setLanguage(root.lang === 'ar' ? 'en' : 'ar', true);
       });
     }
+
+    // Lightbox: clicking a photo in a .timeline-gallery opens it full-size in
+    // an overlay on the page, instead of navigating to the image file.
+    var galleryLinks = document.querySelectorAll('.timeline-gallery a');
+    if (galleryLinks.length) {
+      var box = document.createElement('div');
+      box.className = 'lightbox';
+      box.hidden = true;
+      box.innerHTML = '<button class="lightbox-close" type="button" aria-label="Close">×</button><img alt="">';
+      document.body.appendChild(box);
+      var boxImg = box.querySelector('img');
+      var boxClose = box.querySelector('.lightbox-close');
+
+      function openLightbox(link) {
+        var img = link.querySelector('img');
+        boxImg.src = link.getAttribute('href');
+        boxImg.alt = img ? img.alt : '';
+        box.hidden = false;
+        boxClose.focus();
+      }
+      function closeLightbox() {
+        box.hidden = true;
+        boxImg.src = '';
+      }
+
+      galleryLinks.forEach(function (link) {
+        link.addEventListener('click', function (e) {
+          e.preventDefault();
+          openLightbox(link);
+        });
+      });
+      boxClose.addEventListener('click', closeLightbox);
+      box.addEventListener('click', function (e) {
+        if (e.target === box) closeLightbox();
+      });
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && !box.hidden) closeLightbox();
+      });
+    }
   });
 })();
