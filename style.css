@@ -213,7 +213,12 @@ p { font-size: 18px; line-height: 1.6; color: var(--muted); margin: 0; }
 .lang-switch {
   position: absolute; top: 20px; inset-inline-end: 24px;
   font: inherit; font-size: 15px; color: var(--fg);
-  background: transparent; cursor: pointer;
+  cursor: pointer;
+  /* Sits on top of the photo header on wide screens, so keep it above it and
+     give it a soft backing that stays readable over the photo. */
+  z-index: 10;
+  background: color-mix(in srgb, var(--bg) 70%, transparent);
+  -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
   border: 1px solid color-mix(in srgb, var(--muted) 45%, transparent);
   border-radius: 999px; padding: 6px 16px;
 }
