@@ -48,7 +48,10 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outlin
   width: calc(100% + 48px); margin: 20px -24px 0;
   height: 34px;
   background-image: url("images/tatreez-separator.png");
-  background-repeat: repeat-x;
+  /* "round" (rather than repeat-x) slightly resizes each tile so a whole
+     number always fits the width exactly, so no tile is ever cut off at
+     the edges. */
+  background-repeat: round no-repeat;
   background-position: center;
   background-size: auto 100%;
   opacity: .9;
