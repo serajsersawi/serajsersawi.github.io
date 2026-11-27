@@ -125,6 +125,14 @@ p { font-size: 18px; line-height: 1.6; color: var(--muted); margin: 0; }
 .section > p + p { margin-top: 14px; }
 .section > p a { color: var(--accent); }
 
+/* A small photo inside a bio section, with a caption. Same size on phones. */
+.bio-photo { margin: 18px 0 18px; }
+.bio-photo img {
+  display: block; width: 200px; max-width: 100%; height: auto;
+  border-radius: 10px; border: 1px solid var(--line);
+}
+.bio-photo figcaption { margin-top: 8px; font-size: 14px; color: var(--muted); }
+
 .event {
   display: grid; grid-template-columns: 96px 1fr; gap: 4px 20px;
   padding: 18px 20px; border-radius: 10px; border: 1px solid var(--line);
