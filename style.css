@@ -191,6 +191,8 @@ p { font-size: 18px; line-height: 1.6; color: var(--muted); margin: 0; }
   border: 1px solid var(--line);
 }
 .timeline-gallery a { cursor: zoom-in; }
+/* A photo row directly inside a section (bio page): space it from the text around it. */
+.section > .timeline-gallery { margin: 14px 0; }
 @media (max-width: 480px) { .timeline-gallery img { width: 72px; height: 72px; } }
 
 /* Lightbox overlay for .timeline-gallery photos. */
