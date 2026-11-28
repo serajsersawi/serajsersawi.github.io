@@ -49,6 +49,15 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outlin
   background: linear-gradient(to bottom, transparent 55%, var(--bg) 100%);
 }
 
+/* Embroidered star band closing the bottom of every page, edge to edge,
+   flush with the bottom of the window (cancels body's bottom padding).
+   Same "round" tiling as .tatreez-strip so no star is cut off. */
+.tatreez-band {
+  width: calc(100% + 48px); margin: 56px -24px -48px;
+  height: 40px;
+  background: url("images/tatreez-band.png") center / auto 100% round no-repeat;
+}
+
 /* Tatreez-pattern separator, tiled edge to edge, between the photo header
    and the rest of the page. Same full-bleed technique as .photo-header. */
 .tatreez-strip {
@@ -256,6 +265,7 @@ p { font-size: 18px; line-height: 1.6; color: var(--muted); margin: 0; }
   .photo-header img { object-position: center 55%; }
   .photo-header::after { background: linear-gradient(to bottom, transparent calc(100% - 160px), var(--bg) 100%); }
   .tatreez-strip { width: calc(100% + 96px); margin: 28px -48px 0; height: 60px; }
+  .tatreez-band { width: calc(100% + 96px); margin: 0 -48px; height: 56px; }
 }
 
 /* ---------- Language switch, top corner (top-right in English, top-left in Arabic) ---------- */
