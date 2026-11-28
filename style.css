@@ -1,13 +1,13 @@
 /* Shared styles for every page of the site. */
 
 :root {
-  --bg: #faf8f5; --fg: #1d1b19; --muted: #6f6a64; --accent: #c4562b;
+  --bg: #faf8f5; --fg: #1d1b19; --muted: #6f6a64; --accent: #970b2d;
   --line: color-mix(in srgb, var(--muted) 30%, transparent);
   /* Thread colours taken from the tatreez pattern. */
   --thread: #970b2d;
 }
 @media (prefers-color-scheme: dark) {
-  :root { --bg: #141312; --fg: #f1ede8; --muted: #9a948d; --accent: #e57a4e; --thread: #c0263f; }
+  :root { --bg: #141312; --fg: #f1ede8; --muted: #9a948d; --accent: #f29266; --thread: #d6423c; }
 }
 * { box-sizing: border-box; }
 html, body { min-height: 100%; margin: 0; }
