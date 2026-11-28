@@ -129,11 +129,14 @@ p { font-size: 18px; line-height: 1.6; color: var(--muted); margin: 0; }
   font-size: 13px; letter-spacing: .18em; text-transform: uppercase;
   font-weight: 500; color: var(--accent); margin: 0 0 14px;
 }
-/* Bio page: a thin row of tatreez diamonds between sections instead of a grey line.
-   "round" fits a whole number of diamonds so none is cut at the edges. */
-.tatreez-dividers .section {
-  border-top: 0; padding-top: 42px;
-  background: url("images/tatreez-separator.png") top center / auto 18px round no-repeat;
+/* Bio page: a keffiyeh-style olive-leaf band between sections instead of a grey line.
+   The SVG is used as a mask and filled with the text colour, so it suits light and dark mode. */
+.keffiyeh-dividers .section { position: relative; border-top: 0; padding-top: 42px; }
+.keffiyeh-dividers .section::before {
+  content: ""; position: absolute; top: 0; left: 0; right: 0; height: 12px;
+  background-color: var(--muted); opacity: .55;
+  -webkit-mask: url("images/keffiyeh-divider.svg") left top / auto 12px repeat-x;
+          mask: url("images/keffiyeh-divider.svg") left top / auto 12px repeat-x;
 }
 .section > p { font-size: 17px; color: var(--fg); opacity: .85; }
 .section > p + p { margin-top: 14px; }
@@ -245,7 +248,7 @@ p { font-size: 18px; line-height: 1.6; color: var(--muted); margin: 0; }
   }
   .content { padding: 112px 0 96px; }
   .content > .section:first-child { margin-top: 0; padding-top: 0; border-top: 0; }
-  .tatreez-dividers .content > .section:first-child { background: none; }
+  .keffiyeh-dividers .content > .section:first-child::before { display: none; }
   /* Wide screens: the box is much wider than tall, so the photo is cropped.
      Make it taller, aim the crop a little lower so the oud stays in view,
      and fade only a fixed 160px at the bottom instead of a % of the height. */

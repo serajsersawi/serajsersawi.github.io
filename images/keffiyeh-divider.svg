@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 14" width="20" height="14">
+  <!-- One repeat of a keffiyeh-style olive-leaf band: bold edge lines,
+       a thin centre stem, and leaves alternating above and below it.
+       Used as a CSS mask, so only the shape matters, not the colour. -->
+  <rect x="0" y="0" width="20" height="1.4"/>
+  <rect x="0" y="12.6" width="20" height="1.4"/>
+  <rect x="0" y="6.6" width="20" height="0.8"/>
+  <path d="M1 7 Q5.5 1.8 10 7 Q5.5 5.2 1 7Z"/>
+  <path d="M10 7 Q14.5 12.2 19 7 Q14.5 8.8 10 7Z"/>
+</svg>
