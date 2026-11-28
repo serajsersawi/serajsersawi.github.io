@@ -7,7 +7,7 @@
   --thread: #970b2d;
 }
 @media (prefers-color-scheme: dark) {
-  :root { --bg: #141312; --fg: #f1ede8; --muted: #9a948d; --accent: #e57a4e; --thread: #fd95a3; }
+  :root { --bg: #141312; --fg: #f1ede8; --muted: #9a948d; --accent: #e57a4e; --thread: #c0263f; }
 }
 * { box-sizing: border-box; }
 html, body { min-height: 100%; margin: 0; }
