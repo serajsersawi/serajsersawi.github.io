@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 36" width="20" height="36">
+  <!-- One repeat of a vertical olive branch: a thin stem with slender,
+       smooth leaves alternating right and left, pointing upward. Tiled down
+       the timeline line as a CSS mask, so only the shape matters. -->
+  <rect x="9.5" y="0" width="1" height="36"/>
+  <path d="M10 13 C10.8 8.2 14 4.4 19.4 2.6 C18.2 7.8 15 11.6 10 13Z"/>
+  <path d="M10 31 C9.2 26.2 6 22.4 0.6 20.6 C1.8 25.8 5 29.6 10 31Z"/>
+</svg>

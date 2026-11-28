@@ -195,6 +195,15 @@ p { font-size: 18px; line-height: 1.6; color: var(--muted); margin: 0; }
   border-inline-start: 1px solid var(--line);
 }
 .timeline li:last-child { padding-bottom: 0; border-inline-start-color: transparent; }
+/* The timeline line is drawn as an olive branch (stem with alternating leaves)
+   on top of the plain border, which is hidden. Starts below the diamond. */
+.timeline li:not(:last-child) { border-inline-start-color: transparent; }
+.timeline li:not(:last-child)::after {
+  content: ""; position: absolute; inset-inline-start: -10px; top: 20px; bottom: 0; width: 20px;
+  background-color: var(--muted); opacity: .6;
+  -webkit-mask: url("images/olive-branch.svg") center top / 20px 36px repeat-y;
+          mask: url("images/olive-branch.svg") center top / 20px 36px repeat-y;
+}
 /* Small cross-stitch diamond, like a single tatreez stitch, instead of a round dot. */
 .timeline li::before {
   content: ""; position: absolute; inset-inline-start: -5px; top: 5px;
